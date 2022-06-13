@@ -31,7 +31,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 			{
 				hour,
 				spacing = dpi(4),
-				layout = wibox.layout.fixed.horizontal,
+				layout = wibox.layout.fixed.horizontal, -- horizontal
 			},
 			margins = {top=dpi(4), bottom=dpi(4), left=dpi(9), right=dpi(9)},
 			widget = wibox.container.margin,
@@ -170,7 +170,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		if stat then
 			wifi:get_children_by_id("icon")[1].markup = "<span foreground='" .. beautiful.green .. "'></span>"
 		else
-			wifi:get_children_by_id("icon")[1].markup = "<span foreground='" .. beautiful.red .. "'></span>"
+			wifi:get_children_by_id("icon")[1].markup = "<span foreground='" .. beautiful.green .. "'></span>"
 		end
 
 	end)
@@ -184,7 +184,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 				bri_arc,
 				vol_arc,
 				time,
-				layout = wibox.layout.fixed.horizontal,
+				layout = wibox.layout.fixed.horizontal, -- horizontal
 			},
 			margins = dpi(6),
 			widget = wibox.container.margin,
@@ -201,7 +201,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		filter = awful.widget.tasklist.filter.currenttags,
 		layout = {
 			spacing = dpi(10),
-			layout = wibox.layout.fixed.horizontal,
+			layout = wibox.layout.fixed.horizontal, -- horizontal
 		},
 		widget_template = {
 			{
@@ -222,7 +222,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		{
 			{
 				tasklist,
-				layout = wibox.layout.align.horizontal,
+				layout = wibox.layout.align.horizontal, -- horizontal
 			},
 			margins = {left = dpi(6), right = dpi(6)},
 			widget = wibox.container.margin,
@@ -257,7 +257,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		filter = awful.widget.taglist.filter.all,
 		layout = {
 			spacing = dpi(0),
-			layout = wibox.layout.fixed.horizontal,
+			layout = wibox.layout.fixed.horizontal, -- horizontal
 		},
 		style = {
 			font = beautiful.font_name .. " " .. beautiful.font_size,
@@ -272,7 +272,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 						align = 'center',
 						widget = wibox.widget.textbox,
 					},
-					layout = wibox.layout.align.horizontal,
+					layout = wibox.layout.align.horizontal, -- horizontal
 				},
 				margins = dpi(4),
 				widget = wibox.container.margin,
@@ -305,7 +305,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		{
 			{
 				tags,
-				layout = wibox.layout.fixed.horizontal,
+				layout = wibox.layout.fixed.horizontal, -- horizontal
 			},
 			widget = wibox.container.margin,
 		},
@@ -317,7 +317,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 	----- Set up the BAR -----
 	
 	s.bar = awful.wibar {
-		position = 'bottom',
+		position = 'bottom', -- bottom
 		width = s.geometry.width, -- dpi(200),
 		height = dpi(53),
 		screen = s,
@@ -331,22 +331,22 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		{
 			{
 				tag,
-				layout = wibox.layout.fixed.horizontal,
+				layout = wibox.layout.fixed.horizontal, -- horizontal
 			},
-			{
-				{
-					task,
-					layout = wibox.layout.align.horizontal,
-				},
-				halign = 'center',
-				widget = wibox.container.place,
-			},
-			-- nil,
+			--{
+			--	{
+			--		 task,
+			--		layout = wibox.layout.align.horizontal, -- horizontal
+			--	},
+			--	halign = 'center',
+			--	widget = wibox.container.place,
+			--},
+			nil,
 			{
 				info,
-				layout = wibox.layout.fixed.horizontal,
+				layout = wibox.layout.fixed.horizontal, -- horitontal
 			},
-			layout = wibox.layout.align.horizontal,
+			layout = wibox.layout.align.horizontal, -- horizontal
 		},
 	margins = dpi(8),
 	widget = wibox.container.margin,

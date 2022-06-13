@@ -40,5 +40,5 @@ PATH=$PATH:$HOME/.local/bin
 #eval "$(starship init zsh)"
 
 ## My Stuff
-neofetch
+neofetch | lolcat
 # Stupid: urxvt -fn "xft:zekton rg:size=10"
