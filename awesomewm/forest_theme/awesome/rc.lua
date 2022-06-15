@@ -18,6 +18,9 @@ local gfs = require("gears.filesystem")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+-- Custom
+require "squeals"
+
 -- Error Handling
 naughty.connect_signal("request::display_error", function(message, startup)
     naughty.notification {
@@ -50,6 +53,8 @@ screen.connect_signal("request::wallpaper", function(s)
     }
 end)
 
+awful.spawn.with_shell("~/.config/awesome/autorun.sh")
+
 -- Mouse bindings
 awful.mouse.append_global_mousebindings({
     awful.button({ }, 3, function () mainmenu:toggle() end),
@@ -76,3 +81,5 @@ end)
 
 
 gears.timer.start_new(600, function() collectgarbage("step", 1024) return true end)
+
+awful.spawn.with_shell("~/.config/awesome/autostart.sh")

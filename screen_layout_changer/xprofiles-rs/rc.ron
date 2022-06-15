@@ -1,0 +1,13 @@
+XProfiles(
+		profiles: [
+			(
+				identifier: [
+					"00ffffffffffff0005e30132a20e0000-041f0103804627782a10e5ae5048a725",
+					"00ffffffffffff000daf691400000000-16160104901f117802d1459b59578e2b"
+				],
+	  			profile: "$HOME/.screenlayout/dual-screen-above.sh"
+			)
+		]	
+	)
+
+

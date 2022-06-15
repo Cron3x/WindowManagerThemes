@@ -6,7 +6,6 @@ local dpi = beautiful.xresources.apply_dpi
 
 
 ----- Titlebar/s -----
-
 client.connect_signal("request::titlebars", function(c)
     -- buttons for the titlebar
     local buttons = {
@@ -21,8 +20,8 @@ client.connect_signal("request::titlebars", function(c)
     -- Set the titlebar
 
     local titlebar = awful.titlebar(c, {
-	size = dpi(40),
-	position = 'left',
+			size = dpi(40),
+			position = 'left',
     })
 
     -- Set the button for the titlebar
@@ -36,31 +35,23 @@ client.connect_signal("request::titlebars", function(c)
 	widget = wibox.container.background,
     }
 
-    local min_button = wibox.widget {
-	forced_height = dpi(15),
-	forced_width = dpi(15),
-	shape = function(cr,w,h) gears.shape.circle(cr,w,h) end,
-	bg = beautiful.taglist_fg_empty,
-	widget = wibox.container.background,
-    }
-
     -- Buttons's behavior (kinda)
 
-    c_button:connect_signal("button::release", function()
-	    c:kill()
+    c_button:connect_signal("button::release", function()    
+			c:kill()
     end)
-
-    min_button:connect_signal("button::release", function()
-	    c.minimized = true
-    end)
+		c_button:connect_signal("mouse::enter", function(c)
+	   	c:set_bg("#2f6a3f")
+		end)
+		c_button:connect_signal("mouse::leave", function(c)
+    	c:set_bg('#5CB574')
+		end)
 
     local function updt_color ()
 	    if client.focus == c then
-		    c_button.bg = beautiful.red
-		    min_button.bg = beautiful.blue
+		    c_button.bg = beautiful.green
 	    else
 		    c_button.bg = beautiful.taglist_fg_empty
-		    min_button.bg = beautiful.taglist_fg_empty
 	    end
     end
 
@@ -77,7 +68,6 @@ client.connect_signal("request::titlebars", function(c)
 		{
 			{
 				c_button,
-				min_button,
 				spacing = dpi(10),
 				layout = wibox.layout.fixed.vertical,
 			},

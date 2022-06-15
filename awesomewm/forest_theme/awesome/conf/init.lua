@@ -12,7 +12,7 @@ require "conf.client"
 terminal = "urxvt"
 browser = "firefox"
 fileManager = "thunar"
-editor = os.getenv("EDITOR") or "vim"
+editor = "nvim" or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 local startup_script = [[

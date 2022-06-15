@@ -40,5 +40,5 @@ PATH=$PATH:$HOME/.local/bin
 #eval "$(starship init zsh)"
 
 ## My Stuff
-neofetch | lolcat
+neofetch --ascii_distro archlinux --colors 3 3 2 2 255 3 --ascii_colors 2 2
 # Stupid: urxvt -fn "xft:zekton rg:size=10"

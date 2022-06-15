@@ -89,7 +89,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 				thickness = dpi(5),
 				start_angle = math.pi,
 				value = 60,
-				colors = {beautiful.blue},
+				colors = {beautiful.orange},
 				widget = wibox.container.arcchart,
 			},
 			margins = dpi(6),
@@ -175,15 +175,97 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
 	end)
 
+	-- Battery
+	local bat_arcchart = wibox.widget {
+  widget = wibox.container.arcchart,
+  start_angle = math.pi / 2,
+  thickness = 4,
+  value = 100,
+  min_value = 0,
+  max_value = 100,
+  colors = { beautiful.taglist_fg_focus },
+  bg = beautiful.bg_focus,
+}
+
+local battery_percent = wibox.widget {
+  widget = wibox.widget.textbox,
+  font = beautiful.font_name .. " Bold 10",
+  valign = "center",
+  align = "center",
+  text = ":)",
+}
+
+local battery_circle = wibox.widget {
+  value = 0,
+  border_width = 6,
+  forced_width = 100,
+  forced_height = 100,
+  widget = wibox.container.radialprogressbar,
+  color = beautiful.fg_normal,
+  border_color = beautiful.bg_focus,
+  {
+    battery_percent,
+    widget = wibox.container.margin,
+    margins = 20,
+  },
+}
+
+local battery = wibox.widget {
+  bg = beautiful.bg_subtle,
+  widget = wibox.container.background,
+  {
+    bat_arcchart,
+    widget = wibox.container.margin,
+    margins = 7,
+    bottom = 8,
+  },
+}
+
+awesome.connect_signal("squeal::battery", function(capacity, status)
+  local fill_color = "#a9b665"
+
+  if capacity >= 11 and capacity <= 35 then
+    fill_color = beautiful.warn
+  elseif capacity <= 10 then
+    fill_color = beautiful.critical
+  end
+
+  if status == "Charging\n" then
+    fill_color = beautiful.green
+  end
+
+  bat_arcchart.value = capacity
+  bat_arcchart.colors = { fill_color }
+  battery_percent.text = "\xf0\x9f\x94\x8b " .. tostring(capacity) .. "% "
+	battery_percent.color = fill_color
+  battery_circle.value = capacity / 100
+  battery_circle.color = fill_color
+end)
+
+
 	-- Info
-	
 	local info = wibox.widget {
 		{
 			{
+				battery_percent,
+				--vol_arc,
 				wifi,
-				bri_arc,
-				vol_arc,
 				time,
+				layout = wibox.layout.fixed.horizontal, -- horizontal
+			},
+			margins = dpi(6),
+			widget = wibox.container.margin,
+		},
+		shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,5) end,
+		bg = beautiful.bar,
+		widget = wibox.container.background,
+	}
+
+local info_bat = wibox.widget {
+		{
+			{
+				battery_percent,
+				--vol_arc,
 				layout = wibox.layout.fixed.horizontal, -- horizontal
 			},
 			margins = dpi(6),
@@ -323,7 +405,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		screen = s,
 		bg = beautiful.bar .. "00",
 		visible = true,
-		--shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,10) end,
+		-- shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,50) end,
 	}
 
 
@@ -341,7 +423,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 			--	halign = 'center',
 			--	widget = wibox.container.place,
 			--},
-			nil,
+			nil,	
 			{
 				info,
 				layout = wibox.layout.fixed.horizontal, -- horitontal

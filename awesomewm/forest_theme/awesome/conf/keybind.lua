@@ -4,7 +4,7 @@ modkey = "Mod4"
 alt = "Mod1"
 
 awful.keyboard.append_global_keybindings({
-    awful.key({ modkey, "Shift"}, "d", function() awful.spawn.with_shell("dmenu_run -c -l 10") end,
+    awful.key({ modkey, "Shift"}, "d", function() awful.spawn.with_shell("dmenu_run -c -l 10 -nb '#282828' -sf '#282828' -sb '#a9b665' -nf '#a9b665'") end,
     {description = "open dmenu"}),
 
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
@@ -109,8 +109,8 @@ awful.keyboard.append_global_keybindings({
 -- Volume
 
 awful.keyboard.append_global_keybindings({
-	awful.key({ }, "XF86AudioRaiseVolume", function() awful.spawn.with_shell("pamixer -i 3") end),
-	awful.key({ }, "XF86AudioLowerVolume", function() awful.spawn.with_shell("pamixer -d 3") end),
+	awful.key({ }, "XF86AudioRaiseVolume", function() awful.spawn.with_shell("pamixer -i 1") end),
+	awful.key({ }, "XF86AudioLowerVolume", function() awful.spawn.with_shell("pamixer -d 1") end),
 	awful.key({ }, "XF86AudioMute", function() awful.spawn.with_shell("pamixer -t") end),
 })
 
@@ -120,6 +120,25 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ }, "XF86MonBrightnessUp", function() awful.spawn.with_shell("brightnessctl set 3%+") end),
 	awful.key({ }, "XF86MonBrightnessDown", function() awful.spawn.with_shell("brightnessctl set 3%-") end),
 })
+
+-- FN keys
+
+local playerctl = require "lib.bling".signal.playerctl.lib {
+    ignore = "firefox"
+}
+
+awful.keyboard.append_global_keybindings {
+	awful.key({  }, "XF86AudioPlay", function() playerctl:play_pause() end)
+}
+
+awful.keyboard.append_global_keybindings {
+	awful.key({  }, "XF86AudioNext", function()  playerctl:next() end)
+}
+
+awful.keyboard.append_global_keybindings {
+	awful.key({  }, "XF86AudioPrev", function() playerctl:previous() end)
+}
+
 
 -- Toggle sidebar
 
