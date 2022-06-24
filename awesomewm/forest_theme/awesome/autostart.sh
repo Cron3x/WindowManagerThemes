@@ -12,9 +12,9 @@ function run {
 #autorandr horizontal
 run nm-applet
 #run caffeine
-run pamac-tray
+#run pamac-tray
 #run variety
-run power76-power
+#run power76-power
 #run xfce4-power-manager
 run blueberry-tray
 run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -34,4 +34,5 @@ run volumeicon
 #run discord
 #run telegram-desktop
 run "$HOME/.screenlayout/screen-detect" &
-run cpupower frequency-set --governor performance
+run cpupower frequency-set --governor performance &
+#run /usr/bin/emacs --daemon &

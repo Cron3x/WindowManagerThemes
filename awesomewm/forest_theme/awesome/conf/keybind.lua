@@ -76,6 +76,23 @@ awful.keyboard.append_global_keybindings({
                   end
               end,
               {description = "restore minimized", group = "client"}),
+
+    awful.key ({ modkey, "Shift" }, "F1", function ()
+            awful.screen.focus(1)
+        end, 
+        {description = "focus the specific screen (0)", group = "screen"}),
+    awful.key ({ modkey, "Shift" }, "F2", function ()
+            awful.screen.focus(2)
+        end, 
+        {description = "focus the specific screen (0)", group = "screen"}),
+    awful.key ({ modkey, "Shift" }, "F3", function ()
+            awful.screen.focus(3)
+        end, 
+        {description = "focus the specific screen (0)", group = "screen"}),    
+    awful.key ({ modkey, "Shift" }, "F4", function ()
+            awful.screen.focus(4)
+        end, 
+        {description = "focus the specific screen (0)", group = "screen"}),
 })
 
 -- Layout related keybindings

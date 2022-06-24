@@ -192,7 +192,7 @@ local battery_percent = wibox.widget {
   font = beautiful.font_name .. " Bold 10",
   valign = "center",
   align = "center",
-  text = ":)",
+  text = ":-)",
 }
 
 local battery_circle = wibox.widget {
