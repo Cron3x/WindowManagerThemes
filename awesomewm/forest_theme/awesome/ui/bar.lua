@@ -13,8 +13,23 @@ screen.connect_signal("request::desktop_decoration", function(s)
     -- Each screen has its own tag table.
     awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[1])
 
+	-- Remove wibar on full screen
+	local function remove_wibar(c)
+		if c.fullscreen or c.maximized then
+			c.screen.mywibar.visible = false
+		else
+			c.screen.mywibar.visible = true
+		end
+	end
+
+	-- Remove wibar on full screen
+	local function add_wibar(c)
+		if c.fullscreen or c.maximized then
+			c.screen.mywibar.visible = true
+		end
+	end
+
 	----- Making Variables -----
-	
 	-- Time
 
 	local hour = wibox.widget {
@@ -293,7 +308,7 @@ local info_bat = wibox.widget {
 				},
 				widget = wibox.container.margin,
 			},
-			forced_width = dpi(40),
+			forced_width = dpi(30),
 			shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,5) end,
 			bg = beautiful.bar,
 			widget = wibox.container.background,
@@ -309,7 +324,7 @@ local info_bat = wibox.widget {
 			margins = {left = dpi(6), right = dpi(6)},
 			widget = wibox.container.margin,
 		},
-		forced_height = dpi(40),
+		forced_height = dpi(30),
 		shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,5) end,
 		bg = beautiful.bar .. "00",
 		widget = wibox.container.background,
