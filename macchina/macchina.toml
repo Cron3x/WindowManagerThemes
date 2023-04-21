@@ -1,4 +1,5 @@
 # Specifies the network interface to use for the LocalIP readout
+# Windows Default for Ethernet: Ethernet and for Debian eth0
 interface = "wlan0"
 
 # Lengthen uptime output
@@ -28,7 +29,7 @@ physical_cores = true
 #  if theme path is /home/foo/.config/macchina/themes/Sodium.toml
 #  theme should be uncommented and set to "Sodium"
 #
-theme = "mezora"
+theme = "0x7f"
 
 # Displays only the specified readouts.
 # Accepted values (case-sensitive):
