@@ -1,0 +1,42 @@
+# mezora theme - sauce for macchina cli
+
+separator="ᐈ"
+separator_color="#a3be8c"
+key_color="#a3be8c"
+prefer_small_ascii = true
+
+[palette]
+type="Dark"
+visible=false
+glyph="  "
+
+[box]
+title=" mezora "
+border="double"
+visible=true
+color="#4c566a"
+
+[bar]
+glyph="▮ "
+hide_delimiters=true
+visible=true
+
+[randomize]
+key_color=false
+separator_color=false
+
+[custom_ascii]
+color="#bf616a"
+path="C:\\Users\\cron3\\AppData\\Roaming\\macchina\\themes\\logo.sym"
+
+[keys]
+host="host"
+kernel="kernel"
+distro="distro"
+packages="packages"
+terminal="terminal"
+shell="shell"
+cpu="cpu"
+cpu_load="cpu"
+memory="memory"
+battery="battery"
