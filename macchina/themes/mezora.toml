@@ -11,7 +11,7 @@ visible=false
 glyph="  "
 
 [box]
-title=" mezora "
+title=" 0x7f "
 border="double"
 visible=true
 color="#4c566a"
@@ -27,7 +27,7 @@ separator_color=false
 
 [custom_ascii]
 color="#bf616a"
-path="C:\\Users\\cron3\\AppData\\Roaming\\macchina\\themes\\logo.sym"
+path="./logo.sym"
 
 [keys]
 host="host"
