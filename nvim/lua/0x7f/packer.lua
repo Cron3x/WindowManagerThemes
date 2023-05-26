@@ -33,6 +33,7 @@ return require('packer').startup(function(use)
 	vim.cmd('colorscheme leaf')
 	--use({ 'rose-pine/neovim', as = 'rose-pine' })
 	--vim.cmd('colorscheme rose-pine')
+    
     use {
   	'VonHeikemen/lsp-zero.nvim',
   	branch = 'v2.x',
@@ -51,6 +52,6 @@ return require('packer').startup(function(use)
     	{'hrsh7th/nvim-cmp'},     -- Required
     	{'hrsh7th/cmp-nvim-lsp'}, -- Required
     	{'L3MON4D3/LuaSnip'},     -- Required
-     }
+    }
 }
 end)
