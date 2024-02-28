@@ -86,6 +86,35 @@ require('lazy').setup({
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
+    'alienman5k/jdecomp.nvim',
+    opts = {
+      decompiler = 'fernflower', -- cfr, procyon, fernflower
+      provider = {
+        cfr = {
+          -- bin = 'cfr'
+          jar = os.getenv('HOME') .. '/.local/share/applications/java/cfr-0.152.jar'
+        },
+        procyon = {
+          jar = os.getenv('HOME') .. '/.local/share/applications/java/procyon-decompiler-0.6.0.jar'
+        },
+        fernflower = {
+          jar = os.getenv('HOME') .. '/.local/share/applications/java/fernflower.jar'
+        }
+      }
+    }
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    }
+  },
+
+  {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -349,6 +378,15 @@ require('telescope').setup {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
       },
+    },
+  },
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
     },
   },
 }
@@ -645,5 +683,6 @@ cmp.setup {
 }
 
 require("custom.remap")
+require("custom.dap-config")
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
