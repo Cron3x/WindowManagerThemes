@@ -1,1 +1,72 @@
+;; Kanata configuration 
 
+(defsrc
+    caps
+    rctrl lctrl
+    n
+    f1  f2  f3  f4  f5  f6  f7  f8  f9  f10 f11 f12
+    1 2 3 4 5 6 7 8 9 0
+    ralt 
+    v esc
+    h j k l
+    c i a e b
+)
+
+(defalias
+    esctrl 		( tap-hold 25 50 esc lctrl )
+    universal 		( layer-while-held universal )
+    base		( layer-switch base )
+    
+    vim    		( layer-switch vim )
+    vim_visual    	( layer-switch vim_visual )
+    v_change		( multi @base del )
+)
+
+( deflayer base
+    @esctrl
+    @universal _
+    _
+    _ _ _ _ _ _ _ _ _ _ _ _
+    _ _ _ _ _ _ _ _ _ _
+    _ 
+    _ _
+    _ _ _ _
+    _ _ _ _ _
+)
+
+( deflayer universal
+    caps
+    _ rctrl
+    (unicode   )
+    f13 f14 f15 f16 f17 f18 f19 f20 f21 f22 f23 f24
+    kp1 kp2 kp3 kp4 kp5 kp6 kp7 kp8 kp9 kp0
+    comp
+    @vim @base
+    _ prev pp next
+    _ _ _ _ _
+)
+
+;; Add visuas mode; U = C-z; i & a & esc = base-mode
+( deflayer vim
+    @esctrl
+    _ _
+    _
+    _ _ _ _ _ _ _ _ _ _ _ _
+    _ _ _ _ _ _ _ _ _ _
+    _
+    @vim_visual @base
+    lft down up rght
+    @v_change @base @base (multi lft C-rght ) C-lft
+)
+
+( deflayer vim_visual
+    @esctrl
+    _ _
+    _
+    _ _ _ _ _ _ _ _ _ _ _ _
+    _ _ _ _ _ _ _ _ _ _
+    _
+    @vim @base
+    S-lft S-down S-up S-rght
+    @v_change @base @base (multi lft S-C-rght ) S-C-lft
+)
